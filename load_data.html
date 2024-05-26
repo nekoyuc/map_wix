@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON File to Local Storage</title>
+</head>
+<body>
+    <script>
+        /* 
+            This script fetches a JSON file and stores it in local storage.
+            It is intended to be used as a one-time script to load the JSON file
+            into local storage. Once the JSON file is stored in local storage,
+            you can use the data in your web pages without having to fetch the
+            JSON file every time.
+
+            To customize the project, change the json file name and the local storage name.
+        */
+        // Function to fetch and process the JSON file
+        async function loadAndStoreJSON() {
+            try {
+                // Fetch the JSON file (replace 'your_file.json' with the actual file path)
+                const response = await fetch('Refactorable_data.json');
+                const data = await response.json();
+
+                // Store the parsed JSON data in local storage
+                localStorage.setItem('Refactorable_data_local', JSON.stringify(data));
+
+                console.log('JSON data has been loaded and stored in local storage:', data);
+            } catch (error) {
+                console.error('Error loading or storing JSON:', error);
+            }
+        }
+        loadAndStoreJSON();
+    </script>
+</body>
+</html>
